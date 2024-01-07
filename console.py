@@ -134,21 +134,26 @@ class HBNBCommand(cmd.Cmd):
             if len(key_value_pair) != 2:
                 continue
             key, value = key_value_pair
-
+            # Handle special cases for string values
             if value.startswith('"') and value.endswith('"'):
                 value = value[1:-1].replace('_', ' ').replace('\\"', '"')
             
-            elif all(char.isdigit() for char in value):
-                if "." in value:
-                    value = float(value)
-                else:
-                    value = int(value)
+            elif value.isdigit() or '.' in value:
+                try:
+                    if "." in value:
+                        value = float(value)
+                    else:
+                        value = int(value)
+                        
+                except ValueError:
+                    continue
             else:
                 continue
-            
+
+            # Store the parameter in the dictionary
             dict_attr[key] = value
 
-        
+        # Create an instance of the specified class with the extracted parameters
         new_instance = HBNBCommand.classes[class_name](**dict_attr)
         storage.save()
         print(new_instance.id)
