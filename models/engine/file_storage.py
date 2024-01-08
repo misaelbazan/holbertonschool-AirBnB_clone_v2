@@ -9,7 +9,7 @@ class FileStorage:
     __objects = {}
 
     def all(self, cls=None):
-        """Returns a list of objects of one type of class"""
+        """Returns a dictionary of objects, optionally filtered by class"""
         if cls is not None:
             return {key: obj for key, obj in self.__objects.items() if isinstance(obj, cls)}
         return FileStorage.__objects
