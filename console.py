@@ -137,18 +137,17 @@ class HBNBCommand(cmd.Cmd):
             # Handle special cases for string values
             if value.startswith('"') and value.endswith('"'):
                 value = value[1:-1].replace('_', ' ').replace('\\"', '"')
-            
-            elif value.isdigit() or '.' in value:
+            elif '.' in value:
+                #Handle float values
                 try:
-                    if "." in value:
-                        value = float(value)
-                    else:
-                        value = int(value)
-                        
+                    value = float(value)
                 except ValueError:
                     continue
             else:
-                continue
+                try:
+                    value = int(value)
+                except ValueError:
+                    continue
 
             # Store the parameter in the dictionary
             dict_attr[key] = value
