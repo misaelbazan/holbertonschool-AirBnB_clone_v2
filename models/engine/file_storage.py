@@ -11,7 +11,11 @@ class FileStorage:
     def all(self, cls=None):
         """Returns a dictionary of objects, optionally filtered by class"""
         if cls is not None:
-            return {key: obj for key, obj in self.__objects.items() if isinstance(obj, cls)}
+            dic_class = {}
+            for key, value in FileStorage.__objects.items():
+                if value.__class__ == cls:
+                    dic_class[key] = value
+            return dic_class
         return FileStorage.__objects
 
     def new(self, obj):
@@ -54,7 +58,8 @@ class FileStorage:
     def delete(self, obj=None):
         """Deletes obj from __objects if it exists"""
         if obj is not None:
-            object_key = obj.__class__.__name__ + '.' + obj.id
-            if object_key in self.all():
-                del self.all()[object_key]
-                self.save()
+            for key, value in FileStorage.__objects.items():
+                if obj is value:
+                    del FileStorage.__objects[key]
+                    self.save()
+                    break
