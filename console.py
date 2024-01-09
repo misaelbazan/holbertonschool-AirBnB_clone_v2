@@ -13,7 +13,7 @@ from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
-    """ Contains the functionality for the HBNB console"""
+    """ Contains the fuSnctionality for the HBNB console"""
 
     # determines prompt for interactive/non-interactive modes
     prompt = '(hbnb) ' if sys.__stdin__.isatty() else ''
@@ -135,14 +135,16 @@ class HBNBCommand(cmd.Cmd):
             key, value = key_value_pair
             # Handle special cases for string values
             if value.startswith('"') and value.endswith('"'):
-                value = value[1:-1].replace('_', ' ').replace('\\"', '"')
+                value = value[1:-1].replace('\\"', '"').replace('_', ' ')
             elif '.' in value:
                 # Handle float values
                 try:
                     value = float(value)
                 except ValueError:
                     continue
+
             else:
+                # Handle integer values
                 try:
                     value = int(value)
                 except ValueError:
