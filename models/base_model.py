@@ -20,8 +20,8 @@ class BaseModel:
             try:
                 kwargs['updated_at'] = datetime.strptime(kwargs['updated_at'], '%Y-%m-%dT%H:%M:%S.%f')
                 kwargs['created_at'] = datetime.strptime(kwargs['created_at'], '%Y-%m-%dT%H:%M:%S.%f')
-            except ValueError as e:
-                print(f"Error al convertir fechas: {e}")
+            except KeyError as e:
+                print(f"Error al buscar clave: {e}")
             del kwargs['__class__']
             self.__dict__.update(kwargs)
 
