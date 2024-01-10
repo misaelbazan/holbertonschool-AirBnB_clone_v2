@@ -21,7 +21,7 @@ class BaseModel:
             kwargs['updated_at'] = kwargs.get('updated_at', datetime.now())
             kwargs['created_at'] = kwargs.get('created_at', datetime.now())
             kwargs.pop('__class__', None)
-            storage.new(self)
+            self.__dict__.update(**kwargs)
 
     def __str__(self):
         """Returns a string representation of the instance"""
