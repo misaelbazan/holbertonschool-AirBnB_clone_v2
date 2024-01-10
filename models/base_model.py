@@ -17,7 +17,7 @@ class BaseModel:
         
         else:
             
-            self.id = str(uuid.uuid4())
+            self.id = kwargs.get('id', str(uuid.uuid4()))
             kwargs['updated_at'] = kwargs.get('updated_at', datetime.now())
             kwargs['created_at'] = kwargs.get('created_at', datetime.now())
             
