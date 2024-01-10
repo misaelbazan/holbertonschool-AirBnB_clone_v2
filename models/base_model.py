@@ -16,9 +16,12 @@ class BaseModel:
             storage.new(self)
         
         else:
+
+            if '__class__' in kwargs:
+                del kwargs['__class__']
+
             kwargs['updated_at'] = kwargs.get('updated_at', datetime.now())
             kwargs['created_at'] = kwargs.get('created_at', datetime.now())
-            del kwargs['__class__']
             self.__dict__.update(kwargs)
 
     def __str__(self):
