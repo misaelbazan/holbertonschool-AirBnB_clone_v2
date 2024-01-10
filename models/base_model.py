@@ -20,7 +20,7 @@ class BaseModel:
             self.id = kwargs.get('id', str(uuid.uuid4()))
             kwargs['updated_at'] = kwargs.get('updated_at', datetime.now())
             kwargs['created_at'] = kwargs.get('created_at', datetime.now())
-            del kwargs['__class__']
+            kwargs.pop('__class__', None)
             self.__dict__.update(kwargs)
 
     def __str__(self):
