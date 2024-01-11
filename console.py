@@ -155,6 +155,7 @@ class HBNBCommand(cmd.Cmd):
             # Store the parameter in the dictionary
             dict_attr[key] = value
         
+        dict_attr['__class__'] = class_name
         dict_attr['id'] = str(uuid.uuid4())
         dict_attr['updated_at'] = datetime.now().strftime('%Y-%m-%dT%H:%M:%S.%f')
         dict_attr['created_at'] = datetime.now().strftime('%Y-%m-%dT%H:%M:%S.%f')
