@@ -16,12 +16,12 @@ class BaseModel:
             storage.new(self)
         
         else:
-            
-            self.id = kwargs.get('id', str(uuid.uuid4()))
-            kwargs['updated_at'] = kwargs.get('updated_at', datetime.now())
-            kwargs['created_at'] = kwargs.get('created_at', datetime.now())
-            kwargs.pop('__class__', None)
-            self.__dict__.update(**kwargs)
+            kwargs['updated_at'] = datetime.strptime(kwargs['updated_at'],
+                                                     '%Y-%m-%dT%H:%M:%S.%f')
+            kwargs['created_at'] = datetime.strptime(kwargs['created_at'],
+                                                     '%Y-%m-%dT%H:%M:%S.%f')
+            del kwargs['__class__']
+            self.__dict__.update(kwargs)
 
     def __str__(self):
         """Returns a string representation of the instance"""
