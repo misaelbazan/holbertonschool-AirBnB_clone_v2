@@ -156,8 +156,8 @@ class HBNBCommand(cmd.Cmd):
             dict_attr[key] = value
         
         dict_attr['id'] = str(uuid.uuid4())
-        dict_attr['upadate_at'] = datetime.now()
-        dict_attr['create_at'] = datetime.now()
+        dict_attr['updated_at'] = datetime.now()
+        dict_attr['created_at'] = datetime.now()
 
         # Create an instance of the specified class
         new_instance = HBNBCommand.classes[class_name](**dict_attr)
