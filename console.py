@@ -2,6 +2,8 @@
 """ Console Module """
 import cmd
 import sys
+import uuid
+from datetime import datetime
 from models.base_model import BaseModel
 from models.__init__ import storage
 from models.user import User
@@ -152,6 +154,10 @@ class HBNBCommand(cmd.Cmd):
 
             # Store the parameter in the dictionary
             dict_attr[key] = value
+        
+        dict_attr['id'] = str(uuid.uuid4())
+        dict_attr['upadate_at'] = datetime.now()
+        dict_attr['create_at'] = datetime.now()
 
         # Create an instance of the specified class
         new_instance = HBNBCommand.classes[class_name](**dict_attr)
