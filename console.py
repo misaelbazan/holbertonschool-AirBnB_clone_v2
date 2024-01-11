@@ -155,10 +155,10 @@ class HBNBCommand(cmd.Cmd):
             # Store the parameter in the dictionary
             dict_attr[key] = value
         
-        #dict_attr['__class__'] = class_name
-        #dict_attr['id'] = str(uuid.uuid4())
-        #dict_attr['updated_at'] = datetime.now().strftime('%Y-%m-%dT%H:%M:%S.%f')
-        #dict_attr['created_at'] = datetime.now().strftime('%Y-%m-%dT%H:%M:%S.%f')
+        dict_attr['__class__'] = class_name
+        dict_attr['id'] = str(uuid.uuid4())
+        dict_attr['updated_at'] = datetime.now().strftime('%Y-%m-%dT%H:%M:%S.%f')
+        dict_attr['created_at'] = datetime.now().strftime('%Y-%m-%dT%H:%M:%S.%f')
 
 
 
@@ -166,7 +166,6 @@ class HBNBCommand(cmd.Cmd):
         new_instance = HBNBCommand.classes[class_name](**dict_attr)
         storage.save()
         print(new_instance.id)
-        storage.save()
 
     def help_create(self):
         """ Help information for the create method """
