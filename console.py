@@ -156,7 +156,7 @@ class HBNBCommand(cmd.Cmd):
             dict_attr[key] = value
         
         dict_attr['id'] = str(uuid.uuid4())
-        dict_attr['update_at'] = str(datetime.now())
+        dict_attr['updated_at'] = str(datetime.now())
         dict_attr['created_at'] = str(datetime.now())
 
 
