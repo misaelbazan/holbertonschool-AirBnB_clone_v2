@@ -21,15 +21,15 @@ class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) ' if sys.__stdin__.isatty() else ''
 
     classes = {
-               'BaseModel': BaseModel, 'User': User, 'Place': Place,
-               'State': State, 'City': City, 'Amenity': Amenity,
-               'Review': Review
-              }
+            'BaseModel': BaseModel, 'User': User, 'Place': Place,
+            'State': State, 'City': City, 'Amenity': Amenity,
+            'Review': Review
+            }
     dot_cmds = ['all', 'count', 'show', 'destroy', 'update']
     types = {
-             'number_rooms': int, 'number_bathrooms': int,
-             'max_guest': int, 'price_by_night': int,
-             'latitude': float, 'longitude': float
+            'number_rooms': int, 'number_bathrooms': int,
+            'max_guest': int, 'price_by_night': int,
+            'latitude': float, 'longitude': float
             }
 
     def preloop(self):
@@ -126,44 +126,37 @@ class HBNBCommand(cmd.Cmd):
         if class_name not in HBNBCommand.classes:
             print("** class doesn't exist **")
             return
-        # dict_attr - empty dictionary for completing
+        
+        # Create a dictionary with attributes
         dict_attr = {}
-        # each attribute syntax is <key name>=<value>
         for param in params:
             key_value_pair = param.split("=")
-            # Check if the parameter has the correct format
             if len(key_value_pair) != 2:
                 continue
             key, value = key_value_pair
-            # Handle special cases for string values
+            # Process value according to syntax requirements
             if value.startswith('"') and value.endswith('"'):
                 value = value[1:-1].replace('\\"', '"').replace('_', ' ')
             elif '.' in value:
-                # Handle float values
                 try:
                     value = float(value)
                 except ValueError:
                     continue
-
             else:
-                # Handle integer values
                 try:
                     value = int(value)
                 except ValueError:
                     continue
 
-            # Store the parameter in the dictionary
+
             dict_attr[key] = value
-        
-        dict_attr['__class__'] = class_name
-        dict_attr['id'] = str(uuid.uuid4())
-        dict_attr['updated_at'] = datetime.now().strftime('%Y-%m-%dT%H:%M:%S.%f')
-        dict_attr['created_at'] = datetime.now().strftime('%Y-%m-%dT%H:%M:%S.%f')
-
-
 
         # Create an instance of the specified class
         new_instance = HBNBCommand.classes[class_name](**dict_attr)
+
+        #Set the ID and the date
+        new_instance.id = str(uuid.uuid4())
+        storage.new(new_instance)
         storage.save()
         print(new_instance.id)
 
