@@ -154,10 +154,8 @@ class HBNBCommand(cmd.Cmd):
         # Create an instance of the specified class
         new_instance = HBNBCommand.classes[class_name](**dict_attr)
 
-        #Set the ID and the date
-        new_instance.id = str(uuid.uuid4())
-        storage.new(new_instance)
-        storage.save()
+        # Save it and print its ID
+        new_instance.save()
         print(new_instance.id)
 
     def help_create(self):
