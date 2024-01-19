@@ -12,4 +12,4 @@ class City(BaseModel, Base):
     state_id = Column(String(60), ForeignKey("states.id"), nullable=False)
 
     """represents a relationship with the class Places"""
-    places = relationship("Places", cascade="all, delete-orphan", backref="cities")
+    places = relationship("Place", cascade="all, delete-orphan", backref="cities")
