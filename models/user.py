@@ -2,7 +2,7 @@
 """This module defines a class User"""
 from models.base_model import BaseModel,Base
 from sqlalchemy import Column, String
-from sqlalchemy.orm import Relationship
+from sqlalchemy.orm import relationship
 
 
 class User(BaseModel, Base):
@@ -14,4 +14,4 @@ class User(BaseModel, Base):
     last_name = Column(String(128))
 
     """represents a relationship with the class Places"""
-    places = Relationship("Place", backref="user", cascade="all, delete-orphan")
+    places = relationship("Place", backref="user", cascade="all, delete-orphan")
