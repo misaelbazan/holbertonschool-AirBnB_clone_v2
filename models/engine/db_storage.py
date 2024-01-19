@@ -25,7 +25,6 @@ class DBStorage:
         hbnb_host = getenv("HBNB_MYSQL_HOST")
         hbnb_db = getenv("HBNB_MYSQL_DB")
         hbnb_env = getenv("HBNB_ENV")
-        port = 3306
 
         # Configure the engine with environment variable values
         self.__engine = create_engine(
