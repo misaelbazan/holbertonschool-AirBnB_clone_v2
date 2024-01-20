@@ -7,11 +7,12 @@ from flask import Flask
 app = Flask(__name__)
 
 
-# Create an instance of the Flask application
+# Route for the main page
 @app.route("/", strict_slashes=False)
 def hello_hbnb():
     return "Hello HBNB!"
 
+# Route for "/hbnb"
 @app.route("/hbnb", strict_slashes=False)
 def hbnb():
     return "HBNB"
