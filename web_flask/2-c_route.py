@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Script that starts a Flask web application"""
 from flask import Flask
+from markupsafe import escape
 
 
 # Create an instance of the Flask application
@@ -15,6 +16,11 @@ def hello_hbnb():
 @app.route("/hbnb", strict_slashes=False)
 def hbnb():
     return "HBNB"
+
+@app.route("/c/<text>", strict_slashes=False)
+def c_text(text):
+    text = escape(text).replace('_', ' ')
+    return "C {}".format(text)
 
 # Check if this script is the main program
 if __name__ == '__main__':
