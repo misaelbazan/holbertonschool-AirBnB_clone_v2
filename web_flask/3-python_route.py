@@ -32,8 +32,8 @@ def c_text(text):
 @app.route("/python/", strict_slashes=False)
 @app.route("/python/<text>", strict_slashes=False)
 def python_text(text="is cool"):
-    t = text.replace('_', ' ')
-    return "python {}".format(t)
+    text = escape(text).replace('_', ' ')
+    return "Python {}".format(text)
 
 
 # Check if this script is the main program
