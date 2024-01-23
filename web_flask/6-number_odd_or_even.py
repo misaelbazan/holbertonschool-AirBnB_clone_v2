@@ -13,14 +13,16 @@ def hello_hbnb():
     """this script will return 'hello HBNB'"""
     return "Hello HBNB!"
 
+
 # Route for "/hbnb"
 @app.route("/hbnb", strict_slashes=False)
 def hbnb():
     """
-    It will return the content only 
+    It will return the content only
     if it is in the hbnb url.
     """
     return "HBNB"
+
 
 # Route for "/c/<text>"
 @app.route("/c/<text>", strict_slashes=False)
@@ -29,16 +31,18 @@ def c_text(text):
     text = escape(text).replace('_', ' ')
     return "C {}".format(text)
 
+
 # Route for "/python/<text>"
 @app.route("/python/", strict_slashes=False)
 @app.route("/python/<text>", strict_slashes=False)
-def python_text(text="is_cool"):
+def python_text(text="is cool"):
     """
     This script accepts only text if it does
     not display the default value.
     """
     text = escape(text).replace('_', ' ')
-    return "python {}".format(text)
+    return "Python {}".format(text)
+
 
 # Route for "/number/<int:n>"
 @app.route("/number/<int:n>", strict_slashes=False)
@@ -46,11 +50,13 @@ def num_int(n):
     """This script accepts only integers."""
     return "{} is a number".format(n)
 
+
 # Route for "/number_template/<int:n>"
 @app.route("/number_template/<int:n>")
 def html_int(n):
     """This script links to an html page."""
     return render_template("5-number.html", number=n)
+
 
 # Route for "/number_template/<int:n>"
 @app.route("/number_odd_or_even/<int:n>")
@@ -61,6 +67,7 @@ def number_odd_or_even(n):
     if n % 2 == 0:
         text = "even"
     return render_template("6-number_odd_or_even.html", number=n, even_odd=text)
+
 
 
 # Check if this script is the main program
