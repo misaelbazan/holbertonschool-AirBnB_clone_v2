@@ -63,11 +63,10 @@ def html_int(n):
 def number_odd_or_even(n):
     """This script links to an HTML page.
     Check if the number entered is even or odd"""
-    text = "odd"
+    t = "odd"
     if n % 2 == 0:
-        text = "even"
-    return render_template("6-number_odd_or_even.html", number=n, even_odd=text)
-
+        t = "even"
+    return render_template("6-number_odd_or_even.html", number=n, even_odd=t)
 
 
 # Check if this script is the main program
