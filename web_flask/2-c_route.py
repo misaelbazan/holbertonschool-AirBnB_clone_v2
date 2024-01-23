@@ -13,16 +13,19 @@ app = Flask(__name__)
 def hello_hbnb():
     return "Hello HBNB!"
 
+
 # Route for "/hbnb"
 @app.route("/hbnb", strict_slashes=False)
 def hbnb():
     return "HBNB"
+
 
 # Route for "/c/<text>"
 @app.route("/c/<text>", strict_slashes=False)
 def c_text(text):
     text = escape(text).replace('_', ' ')
     return "C {}".format(text)
+
 
 # Check if this script is the main program
 if __name__ == '__main__':
