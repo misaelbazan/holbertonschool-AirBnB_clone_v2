@@ -19,7 +19,7 @@ def hello_hbnb():
 @app.route("/hbnb", strict_slashes=False)
 def hbnb():
     """
-    It will return the content only 
+    It will return the content only
     if it is in the hbnb url.
     """
     return "HBNB"
@@ -50,6 +50,7 @@ def python_text(text="is cool"):
 def num_int(n):
     """This script accepts only integers."""
     return "{} is a number".format(n)
+
 
 # Route for "/number_template/<int:n>"
 @app.route("/number_template/<int:n>")
