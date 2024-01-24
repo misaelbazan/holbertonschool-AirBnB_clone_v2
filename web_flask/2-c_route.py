@@ -33,7 +33,7 @@ def hbnb():
 def c_text(text):
     # Use replace method for replace "_" with spaces " "
     result = text.replace("_", " ")
-    return f"{result}"
+    return f"C{result}"
 
 
 if __name__ == "__main__":
