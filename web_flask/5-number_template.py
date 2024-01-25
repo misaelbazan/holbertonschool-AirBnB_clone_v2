@@ -61,7 +61,7 @@ def n_is_int_html(n):
     # Validating if "n" is digit
     if n.isdigit():
         # Returning the template with the customized value "n"
-        return render_template("0-template.html", n=n)
+        return render_template("5-number.html", n=n)
  
 
 if __name__ == "__main__":
