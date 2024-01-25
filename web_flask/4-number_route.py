@@ -9,7 +9,7 @@
     .You must use the option strict_slashes=False in the route definition
 """
 
-from flask import Flask
+from flask import Flask, abort
 
 
 # Create an instance of the Flask application
@@ -49,11 +49,10 @@ def python_is_cool(text="is cool"):
 @app.route("/number/<n>", strict_slashes=False)
 def n_is_int(n):
     # Validationg if "n" is int
-    try:
-        n = int(n)
+    if n.isdigit():
         return f"{n} is a number"
-    except ValueError:
-        pass
+    else:
+        abort(404)
 
 
 if __name__ == "__main__":
