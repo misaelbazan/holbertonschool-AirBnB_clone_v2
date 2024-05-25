@@ -29,9 +29,9 @@ def teardown(exception):
 @app.route("/cities_by_states", strict_slashes=False)
 def cities_by_states():
     """Fetching data from storage engine sorted from A-Z by "name" attr"""
-    states_dict = storage.all(State).values()
+    states = storage.all(State)
     # Return a template with the variable set to the required argument
-    return render_template("8-cities_by_states.html", states=states_dict)
+    return render_template("8-cities_by_states.html", states=states)
 
 
 if __name__ == "__main__":
